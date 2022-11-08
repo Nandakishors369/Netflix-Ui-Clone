@@ -43,21 +43,21 @@ class ScreenHome extends StatelessWidget {
               children: [
                 ListView(
                   children: [
-                    BackgroundCardWidget(),
+                    const BackgroundCardWidget(),
                     kheight,
-                    MainTitleCard(
+                    const MainTitleCard(
                       title: "Released in the past year",
                     ),
                     kheight,
-                    MainTitleCard(
+                    const MainTitleCard(
                       title: "Trending Now",
                     ),
                     kheight,
-                    NumberTitleCard(),
+                    const NumberTitleCard(),
                     kheight,
-                    MainTitleCard(title: "Tense Dramas"),
+                    const MainTitleCard(title: "Tense Dramas"),
                     kheight,
-                    MainTitleCard(title: "South Indian")
+                    const MainTitleCard(title: "South Indian")
                   ],
                 ),
                 scrollnotifier.value
@@ -77,10 +77,10 @@ class ScreenHome extends StatelessWidget {
                                     height: 40,
                                   ),
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 IconButton(
                                     onPressed: () {},
-                                    icon: Icon(
+                                    icon: const Icon(
                                       Icons.cast,
                                       color: Colors.white,
                                     )),
@@ -96,19 +96,19 @@ class ScreenHome extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text(
+                                const Text(
                                   "Tv Shows",
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(
+                                const Text(
                                   "Movies",
                                   style: TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                Text(
+                                const Text(
                                   "Categories",
                                   style: TextStyle(
                                       fontSize: 16,

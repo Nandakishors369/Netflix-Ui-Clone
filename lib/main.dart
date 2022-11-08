@@ -21,10 +21,10 @@ class MyApp extends StatelessWidget {
         backgroundColor: backgroundcolor,
         scaffoldBackgroundColor: backgroundcolor,
         textTheme: TextTheme(
-          bodyText1: GoogleFonts.workSans(
+          bodyText1: GoogleFonts.montserrat(
             textStyle: const TextStyle(color: Colors.white),
           ),
-          bodyText2: GoogleFonts.workSans(
+          bodyText2: GoogleFonts.montserrat(
             textStyle: const TextStyle(color: Colors.white),
           ),
         ),

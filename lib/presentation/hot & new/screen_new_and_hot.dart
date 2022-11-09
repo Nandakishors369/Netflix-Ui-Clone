@@ -6,6 +6,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/home/widgets/custom_widget.dart';
+import 'package:netflix_clone/presentation/hot%20&%20new/widgets/comin_soon_widget.dart';
+import 'package:netflix_clone/presentation/hot%20&%20new/widgets/everyones_watching.dart';
+import 'package:netflix_clone/presentation/widgets/video_widget.dart';
 
 class ScreenHotAndNew extends StatelessWidget {
   const ScreenHotAndNew({super.key});
@@ -66,76 +70,21 @@ class ScreenHotAndNew extends StatelessWidget {
   }
 
   Widget _buildComingSoon(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return ListView(
-      children: [
-        kheight,
-        Row(
-          children: [
-            SizedBox(
-              width: 50,
-              height: 500,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "FEB",
-                    style: TextStyle(
-                        fontSize: 18,
-                        color: Color.fromARGB(156, 158, 158, 158)),
-                  ),
-                  Text(
-                    "11",
-                    style: TextStyle(
-                        fontSize: 30,
-                        letterSpacing: 4,
-                        fontWeight: FontWeight.w900),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(
-              width: size.width - 50,
-              height: 500,
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      SizedBox(
-                        width: double.infinity,
-                        height: 150,
-                        child: Image.network(
-                          "https://www.themoviedb.org/t/p/w250_and_h141_face/tFlSDoWQsAZ2qjICKzfP5Yw6zM5.jpg",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 10,
-                        right: 10,
-                        child: CircleAvatar(
-                          backgroundColor: Colors.black.withOpacity(0.5),
-                          radius: 20,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.volume_down_alt,
-                              size: 20,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-          ],
-        )
-      ],
+    return ListView.builder(
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        return CominSoonWidget();
+      },
+      itemCount: 10,
     );
   }
 }
 
 Widget _builEveryonesWatching() {
-  return SizedBox();
+  return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: ListView.builder(
+        itemBuilder: (context, index) => EveryonesWatching(),
+        itemCount: 10,
+      ));
 }

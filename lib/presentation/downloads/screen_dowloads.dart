@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/application/Downloads/downloads_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/main_page/widgets/app_bar.dart';
@@ -51,14 +53,20 @@ class _smartDownloads extends StatelessWidget {
 
 class Section2 extends StatelessWidget {
   Section2({super.key});
-  final List imageList = [
+  /*  final List imageList = [
     "https://www.themoviedb.org/t/p/w220_and_h330_face/lJA2RCMfsWoskqlQhXPSLFQGXEJ.jpg",
     "https://www.themoviedb.org/t/p/w220_and_h330_face/wGE4ImqYjJZQi3xFu4I2OLm8m0w.jpg",
     "https://www.themoviedb.org/t/p/w220_and_h330_face/vtfsNxAsDHElFvYHUc9Khwqg17Y.jpg",
   ];
-
+ */
   @override
   Widget build(BuildContext context) {
+    /*   WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(DownloadsEvent.getDownloadsImages());
+    }); */
+    BlocProvider.of<DownloadsBloc>(context)
+        .add(DownloadsEvent.getDownloadsImages());
     final Size size = MediaQuery.of(context).size;
 
     return Column(
@@ -74,39 +82,46 @@ class Section2 extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey, fontSize: 16),
         ),
-        SizedBox(
-          width: size.width,
-          height: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Center(
-                child: CircleAvatar(
-                  backgroundColor: Colors.grey.withOpacity(.5),
-                  radius: size.width * 0.4,
-                ),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return SizedBox(
+              width: size.width,
+              height: size.width,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Center(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.grey.withOpacity(.5),
+                      radius: size.width * 0.4,
+                    ),
+                  ),
+                  DownloadsImages(
+                    imageList:
+                        '$imageAppendUrl${state.downloads![0].posterPath}',
+                    angle: -20,
+                    margin: const EdgeInsets.only(
+                      right: 140,
+                      bottom: 50,
+                    ),
+                    size: Size(size.width * .38, size.width * .58),
+                  ),
+                  DownloadsImages(
+                      imageList:
+                          '$imageAppendUrl${state.downloads![1].posterPath}',
+                      angle: 20,
+                      margin: EdgeInsets.only(left: 140, bottom: 50),
+                      size: Size(size.width * .38, size.width * .58)),
+                  DownloadsImages(
+                      imageList:
+                          '$imageAppendUrl${state.downloads![9].posterPath}',
+                      angle: 0,
+                      margin: EdgeInsets.only(bottom: 15),
+                      size: Size(size.width * .43, size.width * .65))
+                ],
               ),
-              DownloadsImages(
-                imageList: imageList[0],
-                angle: -20,
-                margin: const EdgeInsets.only(
-                  right: 140,
-                  bottom: 50,
-                ),
-                size: Size(size.width * .38, size.width * .58),
-              ),
-              DownloadsImages(
-                  imageList: imageList[1],
-                  angle: 20,
-                  margin: EdgeInsets.only(left: 140, bottom: 50),
-                  size: Size(size.width * .38, size.width * .58)),
-              DownloadsImages(
-                  imageList: imageList[2],
-                  angle: 0,
-                  margin: EdgeInsets.only(bottom: 10),
-                  size: Size(size.width * .43, size.width * .65))
-            ],
-          ),
+            );
+          },
         ),
       ],
     );

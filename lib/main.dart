@@ -9,6 +9,8 @@ import 'package:netflix_clone/presentation/main_page/screen_main_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
+  setup();
+
   runApp(const MyApp());
 }
 

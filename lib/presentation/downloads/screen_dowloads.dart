@@ -61,12 +61,11 @@ class Section2 extends StatelessWidget {
  */
   @override
   Widget build(BuildContext context) {
-    /*   WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       BlocProvider.of<DownloadsBloc>(context)
           .add(DownloadsEvent.getDownloadsImages());
-    }); */
-    BlocProvider.of<DownloadsBloc>(context)
-        .add(DownloadsEvent.getDownloadsImages());
+    });
+
     final Size size = MediaQuery.of(context).size;
 
     return Column(
@@ -87,39 +86,41 @@ class Section2 extends StatelessWidget {
             return SizedBox(
               width: size.width,
               height: size.width,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Center(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey.withOpacity(.5),
-                      radius: size.width * 0.4,
+              child: state.isLoading
+                  ? Center(child: const CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Center(
+                          child: CircleAvatar(
+                            backgroundColor: Colors.grey.withOpacity(.5),
+                            radius: size.width * 0.4,
+                          ),
+                        ),
+                        DownloadsImages(
+                          imageList:
+                              '$imageAppendUrl${state.downloads![0].posterPath}',
+                          angle: -20,
+                          margin: const EdgeInsets.only(
+                            right: 140,
+                            bottom: 50,
+                          ),
+                          size: Size(size.width * .38, size.width * .58),
+                        ),
+                        DownloadsImages(
+                            imageList:
+                                '$imageAppendUrl${state.downloads![2].posterPath}',
+                            angle: 20,
+                            margin: EdgeInsets.only(left: 140, bottom: 50),
+                            size: Size(size.width * .38, size.width * .58)),
+                        DownloadsImages(
+                            imageList:
+                                '$imageAppendUrl${state.downloads![6].posterPath}',
+                            angle: 0,
+                            margin: EdgeInsets.only(bottom: 15),
+                            size: Size(size.width * .43, size.width * .65))
+                      ],
                     ),
-                  ),
-                  DownloadsImages(
-                    imageList:
-                        '$imageAppendUrl${state.downloads![0].posterPath}',
-                    angle: -20,
-                    margin: const EdgeInsets.only(
-                      right: 140,
-                      bottom: 50,
-                    ),
-                    size: Size(size.width * .38, size.width * .58),
-                  ),
-                  DownloadsImages(
-                      imageList:
-                          '$imageAppendUrl${state.downloads![1].posterPath}',
-                      angle: 20,
-                      margin: EdgeInsets.only(left: 140, bottom: 50),
-                      size: Size(size.width * .38, size.width * .58)),
-                  DownloadsImages(
-                      imageList:
-                          '$imageAppendUrl${state.downloads![9].posterPath}',
-                      angle: 0,
-                      margin: EdgeInsets.only(bottom: 15),
-                      size: Size(size.width * .43, size.width * .65))
-                ],
-              ),
             );
           },
         ),

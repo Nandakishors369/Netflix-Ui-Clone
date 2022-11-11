@@ -1,27 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/search/widgets/search_result.dart';
-import 'package:netflix_clone/presentation/widgets/maincard.dart';
 import 'package:netflix_clone/presentation/widgets/title.dart';
 
-class MainTitleCard extends StatelessWidget {
-  const MainTitleCard({
-    Key? key,
-    required this.title,
-    required this.posterPathlist,
-  }) : super(key: key);
+import 'number_card.dart';
 
+class TopTitleCard extends StatelessWidget {
+  const TopTitleCard(
+      {super.key, required this.title, required this.posterPathList});
   final String title;
-  final List<String> posterPathlist;
+  final List<String> posterPathList;
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      // ignore: prefer_const_literals_to_create_immutables
       children: [
         kheight,
-        kwidth,
         MainTitle(title: title),
         kheight,
         LimitedBox(
@@ -29,9 +24,11 @@ class MainTitleCard extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: List.generate(
-              posterPathlist.length,
-              (index) => MainCard(
-                imageUrl: posterPathlist[index],
+              posterPathList.length,
+              (index) => NumberCard(
+                index: index + 1,
+                size: size,
+                posterPath: posterPathList[index],
               ),
             ),
           ),

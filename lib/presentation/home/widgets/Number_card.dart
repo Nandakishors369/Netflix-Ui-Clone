@@ -1,53 +1,52 @@
 import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:netflix_clone/core/colors/colors.dart';
 
 class NumberCard extends StatelessWidget {
-  const NumberCard({super.key, required this.index});
+  const NumberCard({
+    Key? key,
+    required this.size,
+    required this.index,
+    required this.posterPath,
+  }) : super(key: key);
+
+  final Size size;
   final int index;
+  final String posterPath;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Row(
-          children: [
-            SizedBox(
-              width: 40,
-              height: 200,
+        Container(
+          margin: const EdgeInsets.only(left: 40, right: 5),
+          width: size.width * 0.35,
+          height: size.width * 0.55,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+              image: NetworkImage(posterPath),
+              fit: BoxFit.cover,
             ),
-            Container(
-              width: 150,
-              height: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                image: const DecorationImage(
-                    image: NetworkImage(
-                        "https://www.themoviedb.org/t/p/w220_and_h330_face/tVxDe01Zy3kZqaZRNiXFGDICdZk.jpg"),
-                    fit: BoxFit.cover),
-              ),
-            ),
-          ],
+          ),
         ),
         Positioned(
-          left: 15,
-          bottom: -16,
+          bottom: -28,
+          left: 2,
           child: BorderedText(
-            strokeColor: Colors.white,
-            strokeWidth: 5,
+            strokeColor: kwhiteColor,
+            strokeWidth: 3.0,
             child: Text(
-              "${index + 1}",
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 120,
-                fontWeight: FontWeight.bold,
+              "$index",
+              style: const TextStyle(
                 decoration: TextDecoration.none,
+                fontSize: 130,
+                fontWeight: FontWeight.w900,
+                color: kblackcolor,
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

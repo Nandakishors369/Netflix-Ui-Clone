@@ -2,14 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
+import 'package:netflix_clone/application/new_and_hot/new_and_hot_bloc.dart';
+import 'package:intl/src/intl/date_format.dart';
 import 'package:netflix_clone/core/Strings.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/coming_soon_widget.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/everyone_watching_widget.dart';
-
-import '../../application/new_and_hot/new_and_hot_bloc.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
   const ScreenNewAndHot({super.key});

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/home/widgets/Number_card.dart';
 import 'package:netflix_clone/presentation/widgets/title.dart';
-
-import 'number_card.dart';
 
 class TopTitleCard extends StatelessWidget {
   const TopTitleCard(

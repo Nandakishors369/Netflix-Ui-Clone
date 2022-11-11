@@ -3,8 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/domain/core/Main%20Failure/main_failure.dart';
 import 'package:netflix_clone/domain/new_and_hot/models/new_and_hot.dart';
-
-import '../../domain/new_and_hot/new_and_hot_services.dart';
+import 'package:netflix_clone/domain/new_and_hot/new_and_hot_services.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

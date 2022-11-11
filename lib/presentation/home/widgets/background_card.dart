@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/widgets/custom_button.dart';
+import 'package:netflix_clone/presentation/home/widgets/custom_widget.dart';
 
-class BackgroundImageWidget extends StatelessWidget {
-  const BackgroundImageWidget({
-    Key? key,
-  }) : super(key: key);
+class BackgroundCardWidget extends StatelessWidget {
+  const BackgroundCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,9 @@ class BackgroundImageWidget extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage(kMainImage),
-              fit: BoxFit.cover,
-            ),
+                image: NetworkImage(kMainImage), fit: BoxFit.cover),
           ),
         ),
         Positioned(
@@ -27,13 +25,16 @@ class BackgroundImageWidget extends StatelessWidget {
           left: 0,
           right: 0,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 10.0),
+            padding: const EdgeInsets.only(bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                const CustomButton(icon: Icons.add, title: 'My List'),
-                playButton(),
-                const CustomButton(icon: Icons.info, title: 'Info'),
+                const CUstomButtonWidget(
+                  icon: Icons.add,
+                  title: "List",
+                ),
+                _playbutton(),
+                CUstomButtonWidget(icon: Icons.info_outline, title: "Info")
               ],
             ),
           ),
@@ -43,19 +44,20 @@ class BackgroundImageWidget extends StatelessWidget {
   }
 }
 
-TextButton playButton() {
+TextButton _playbutton() {
   return TextButton.icon(
-    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(kwhiteColor)),
     onPressed: () {},
+    style: const ButtonStyle(
+        backgroundColor: MaterialStatePropertyAll(kwhiteColor)),
     icon: const Icon(
       Icons.play_arrow,
-      size: 25,
+      size: 20,
       color: kblackcolor,
     ),
     label: const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 1),
+      padding: EdgeInsets.symmetric(horizontal: 10),
       child: Text(
-        'Play',
+        "Play",
         style: TextStyle(fontSize: 20, color: kblackcolor),
       ),
     ),

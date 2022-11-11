@@ -1,16 +1,16 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/home/home_bloc.dart';
 import 'package:netflix_clone/core/Strings.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
-import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/home/widgets/background_image.dart';
-import 'package:netflix_clone/presentation/home/widgets/top_title_card.dart';
-import 'package:netflix_clone/presentation/widgets/main_title_card.dart';
 
-import '../../application/home/home_bloc.dart';
+import 'package:netflix_clone/core/constants.dart';
+import 'package:netflix_clone/presentation/home/widgets/Number_card.dart';
+import 'package:netflix_clone/presentation/home/widgets/background_card.dart';
+import 'package:netflix_clone/presentation/home/widgets/number_title_card.dart';
+
+import '../widgets/main_title_card.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
 
@@ -80,44 +80,37 @@ class ScreenHome extends StatelessWidget {
                             state.trendingTvList.map((m) {
                           return '$imageAppendurl${m.posterPath}';
                         }).toList();
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: ListView(
-                            children: [
-                              BackgroundImageWidget(),
-                              kwidth,
-                              MainTitleCard(
-                                title: 'Released in the Past Year',
-                                posterPathlist: pastYear.sublist(0, 10),
-                              ),
-                              kwidth,
-                              MainTitleCard(
-                                title: 'Trending Now',
-                                posterPathlist: trending.sublist(0, 11),
-                              ),
-                              kwidth,
-                              TopTitleCard(
-                                title: 'Top 10 Tv Shows in India Today',
-                                posterPathList: top10.sublist(0, 11),
-                              ),
-                              kwidth,
-                              MainTitleCard(
-                                title: 'Tense Dramas',
-                                posterPathlist: tenseDrama.sublist(0, 11),
-                              ),
-                              kwidth,
-                              MainTitleCard(
-                                title: 'South indian Cinemas',
-                                posterPathlist: southIndia.sublist(0, 11),
-                              ),
-                            ],
-                          ),
+                        return ListView(
+                          children: [
+                            BackgroundCardWidget(),
+                            MainTitleCard(
+                              title: '  Released in the Past Year',
+                              posterPathlist: pastYear.sublist(0, 10),
+                            ),
+                            MainTitleCard(
+                              title: '  Trending Now',
+                              posterPathlist: trending.sublist(0, 11),
+                            ),
+                            TopTitleCard(
+                              title: '  Top 10 Tv Shows in India Today',
+                              posterPathList: top10.sublist(0, 11),
+                            ),
+                            MainTitleCard(
+                              title: '  Tense Dramas',
+                              posterPathlist: tenseDrama.sublist(0, 11),
+                            ),
+                            MainTitleCard(
+                              title: '  South indian Cinemas',
+                              posterPathlist: southIndia.sublist(0, 11),
+                            ),
+                          ],
                         );
                       }
                     },
                   ),
                   value
-                      ? Container(
+                      ? AnimatedContainer(
+                          duration: Duration(microseconds: 2000),
                           width: double.infinity,
                           height: 80,
                           color: Colors.black.withOpacity(0.1),

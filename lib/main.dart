@@ -6,10 +6,11 @@ import 'package:netflix_clone/application/Search/search_bloc/search_bloc.dart';
 import 'package:netflix_clone/application/fastlaugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/application/new_and_hot/new_and_hot_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
-import 'package:netflix_clone/domain/core/di/injectable.dart';
+
 import 'package:netflix_clone/presentation/main_page/screen_main_page.dart';
 
 import 'application/home/home_bloc.dart';
+import 'domain/core/di/injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

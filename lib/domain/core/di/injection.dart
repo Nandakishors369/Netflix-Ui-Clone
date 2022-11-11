@@ -3,6 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:netflix_clone/application/Downloads/downloads_bloc.dart';
 import 'package:netflix_clone/application/fastlaugh/fast_laugh_bloc.dart';
 import 'package:netflix_clone/application/home/home_bloc.dart';
+
 import 'package:netflix_clone/application/new_and_hot/new_and_hot_bloc.dart';
 import 'package:netflix_clone/domain/new_and_hot/models/new_and_hot.dart';
 import 'package:netflix_clone/infrastructure/downloads/downloads_repository.dart';

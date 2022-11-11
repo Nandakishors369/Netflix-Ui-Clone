@@ -19,6 +19,7 @@ class SearchImpl implements SearchService {
         ApiEndPoints.search,
         queryParameters: {'query': movieQuery},
       );
+
       if (response.statusCode == 200 || response.statusCode == 201) {
         final result = SearchResponse.fromJson(response.data);
         return Right(result);
@@ -26,7 +27,7 @@ class SearchImpl implements SearchService {
         return const Left(MainFailure.serverFailure());
       }
     } catch (e) {
-      log(e.toString());
+      //log(e.toString());
       return const Left(MainFailure.clientFailure());
     }
   }
